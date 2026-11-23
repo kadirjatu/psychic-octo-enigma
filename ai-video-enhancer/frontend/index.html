@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Video Enhancer</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="logo">AI</span><span>Video Enhancer</span></div>
+    <nav><a href="#home">Home</a><a href="#about">About</a><a href="#processing">Processing status</a></nav>
+  </header>
+  <main id="home">
+    <section class="hero">
+      <p class="eyebrow">REAL-ESRGAN x2 PLUS</p>
+      <h1>Enhance every frame.</h1>
+      <p>AI-powered 2x video enhancement with synchronized original audio.</p>
+    </section>
+    <section class="card" id="upload-card">
+      <div id="drop-zone" class="drop-zone">
+        <input id="file-input" type="file" accept=".mp4,.mov,.mkv,.avi,.webm,video/*">
+        <div class="upload-icon">↑</div>
+        <h2>Drop a video here</h2>
+        <p>MP4, MOV, MKV, AVI or WebM</p>
+        <button id="browse-button" type="button">Browse video</button>
+      </div>
+      <div id="upload-progress" class="hidden">
+        <div class="row"><strong>Uploading</strong><span id="upload-percent">0%</span></div>
+        <progress id="upload-bar" max="100" value="0"></progress>
+        <button id="cancel-upload" class="secondary" type="button">Cancel upload</button>
+      </div>
+    </section>
+    <section id="video-info" class="card hidden"></section>
+    <section id="processing" class="card hidden">
+      <h2>Processing</h2>
+      <div class="row"><strong id="stage">Preparing</strong><span id="job-percent">0%</span></div>
+      <progress id="job-bar" max="100" value="0"></progress>
+      <p id="frame-progress"></p>
+      <button id="cancel-job" class="secondary" type="button">Cancel processing</button>
+    </section>
+    <section id="settings" class="card">
+      <h2>Enhancement settings</h2>
+      <div class="settings-grid">
+        <label>Scale<strong>Real-ESRGAN 2x</strong></label>
+        <label>Device<strong id="device">Detecting...</strong></label>
+        <label>Tile size<input id="tile-size" type="number" min="32" max="1024" value="128"></label>
+      </div>
+      <button id="enhance-button" type="button" disabled>Enhance video</button>
+    </section>
+    <section id="results" class="card hidden">
+      <h2>Results</h2>
+      <div class="comparison">
+        <article><h3>Original</h3><video id="original-video" controls></video></article>
+        <article><h3>Enhanced</h3><video id="enhanced-video" controls></video></article>
+      </div>
+      <div id="resolution-info" class="settings-grid"></div>
+      <a id="download-button" class="button" href="#" download="enhanced.mp4">Download enhanced MP4</a>
+    </section>
+  </main>
+  <footer id="about">Real 2x frame enhancement with FFmpeg reconstruction and original audio restoration.</footer>
+  <script src="/app.js"></script>
+</body>
+</html>
